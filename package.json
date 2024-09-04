@@ -1,0 +1,26 @@
+{
+  "name": "roombooker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.7",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.7",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.35.2",
+    "prettier": "3.3.3"
+  }
+}

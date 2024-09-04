@@ -1,0 +1,19 @@
+:root {
+  --black: #1c0907;
+  --brown: #5d2c27;
+  --sky: #2095d8;
+  --light-sky: #bdd7ed;
+  --white: #f8efed;
+}
+
+*,
+*::before,
+*::after {
+  background-color: var(--black);
+  box-sizing: border-box;
+  margin: 0;
+  color: var(--white);
+  padding: 0;
+  border: 0;
+  font-size: 0.96rem;
+}
