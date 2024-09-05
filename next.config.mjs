@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import initDatabase from './src/db/index.js'
 
-export default nextConfig;
+initDatabase()
+
+const nextConfig = {
+  reactStrictMode: true
+}
+
+export default nextConfig
