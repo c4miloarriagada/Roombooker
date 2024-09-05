@@ -47,3 +47,4 @@ docker-compose.override.yaml
 # OS generated files
 .DS_Store
 Thumbs.db
+.next/*
