@@ -5,15 +5,3 @@
   --light-sky: #bdd7ed;
   --white: #f8efed;
 }
-
-*,
-*::before,
-*::after {
-  background-color: var(--black);
-  box-sizing: border-box;
-  margin: 0;
-  color: var(--white);
-  padding: 0;
-  border: 0;
-  font-size: 0.96rem;
-}

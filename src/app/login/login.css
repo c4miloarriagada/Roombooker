@@ -1,0 +1,29 @@
+
+.fondo {
+    position: absolute;
+    background-image: url("/img/fondo.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.panel {
+    width: 50%;
+    display: inline-block;
+}
+
+.titulo {
+    color: #ffff;
+    font-family: "Lexend";
+    font-size: 75px;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+
+
+

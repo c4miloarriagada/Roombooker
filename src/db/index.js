@@ -2,6 +2,12 @@ import { db } from '../lib/db.js'
 import User from '../models/User.js'
 import Reserva from '../models/Reserva.js'
 import TipoUsuario from '../models/TipoUsuario.js'
+import DetalleReserva from '../models/DetalleReserva.js'
+import Habitacion from '../models/Habitacion.js'
+import TipoHabitacion from '../models/TipoHabitacion.js'
+import PagoReserva from '../models/PagoReserva.js'
+
+
 const initDatabase = async () => {
   try {
     await db.authenticate()

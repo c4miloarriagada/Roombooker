@@ -1,0 +1,34 @@
+
+.fondo {
+    position: absolute;
+    background-image: url("/img/fondo.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+
+    text-align: center;
+}
+
+.titulo {
+    color: #ffff;
+    font-family: "Lexend";
+    font-size: 75px;
+    text-shadow: 1px 1px 2px black;
+}
+
+
+.boton {
+    background: #2E4C59;
+    color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    margin-top: 50px;
+    line-height: 50px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
