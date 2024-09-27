@@ -1,0 +1,77 @@
+.fondo {
+    position: absolute;
+    background-image: url("/img/fondo.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.panel {
+    position: absolute;
+    bottom: 2%; 
+    width: 98%; 
+    height: 40%; 
+    background-color: rgba(255, 255, 255, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    border-radius: 20px;
+  }
+
+.titulo {
+    color: #ffff;
+    font-family: "Aboreto";
+    font-size: 75px;
+    text-shadow: 1px 1px 2px black;
+}
+
+.barra {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 10px; 
+    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    size: cover;
+}
+
+.barra label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+.barra input,
+.barra select,
+.barra button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.barra button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.barra button:hover {
+  background-color: #0056b3;
+}
