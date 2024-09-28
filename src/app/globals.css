@@ -5,3 +5,7 @@
   --light-sky: #bdd7ed;
   --white: #f8efed;
 }
+
+* {
+  box-sizing: border-box;
+}

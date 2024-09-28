@@ -7,7 +7,6 @@ import Habitacion from '../models/Habitacion.js'
 import TipoHabitacion from '../models/TipoHabitacion.js'
 import PagoReserva from '../models/PagoReserva.js'
 
-
 const initDatabase = async () => {
   try {
     await db.authenticate()
@@ -27,18 +26,22 @@ export default initDatabase
 
 async function createTiposUsuario() {
   try {
-    const adminExists = await TipoUsuario.findOne({
-      where: { nombre_tipo: 'administrador' }
-    })
-    if (!adminExists) {
-      await TipoUsuario.create({ nombre_tipo: 'administrador' })
-    }
+    const roles = [
+      'administrador',
+      'cliente',
+      'recepcionista',
+      'camarista',
+      'mantenimiento'
+    ]
 
-    const clienteExists = await TipoUsuario.findOne({
-      where: { nombre_tipo: 'cliente' }
-    })
-    if (!clienteExists) {
-      await TipoUsuario.create({ nombre_tipo: 'cliente' })
+    for (const role of roles) {
+      const roleExists = await TipoUsuario.findOne({
+        where: { nombre_tipo: role }
+      })
+
+      if (!roleExists) {
+        await TipoUsuario.create({ nombre_tipo: role })
+      }
     }
 
     console.log('Tipos de usuario creados correctamente')

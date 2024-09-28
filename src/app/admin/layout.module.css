@@ -1,0 +1,32 @@
+.titulo {
+  color: #aa6227;
+}
+
+.admin__container {
+  display: grid;
+  height: 100dvh;
+  width: 100dvw;
+  grid-template-areas: 'form aside';
+}
+
+.aside {
+  grid-area: aside;
+  padding: 1rem;
+}
+
+.photo {
+  background-image: url('/img/fondo.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.formulario {
+  padding: 2rem;
+  height: 100%;
+  width: 100%;
+  grid-area: form;
+}
