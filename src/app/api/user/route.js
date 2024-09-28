@@ -34,3 +34,49 @@ export async function POST(req) {
     )
   }
 }
+
+export async function GET(req) {
+  const users = await User.findAll()
+    .then((users) => {
+      return users
+    })
+    .catch((error) => {
+      console.error('Error al obtener los datos:', error)
+    })
+
+  return NextResponse.json({ users })
+}
+
+export async function DELETE(req) {
+  try {
+    const { id } = await req.json()
+
+    if (!id) {
+      return new Response(JSON.stringify({ error: 'ID no proporcionado' }), {
+        status: 400
+      })
+    }
+
+    const resultado = await User.destroy({
+      where: { id }
+    })
+
+    if (resultado === 0) {
+      return new Response(
+        JSON.stringify({ error: 'Registro no encontrado' }),
+        {}
+      )
+    }
+
+    return new Response(
+      JSON.stringify({ message: 'Registro eliminado exitosamente' }),
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error('Error al eliminar el registro:', error)
+    return new Response(
+      JSON.stringify({ error: 'Error interno del servidor' }),
+      { status: 500 }
+    )
+  }
+}
