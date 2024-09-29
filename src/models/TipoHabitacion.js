@@ -13,6 +13,10 @@ const TipoHabitacion = db.define(
     descripcion_tipo_habitacion: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    precio: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   },
   {

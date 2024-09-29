@@ -1,8 +1,12 @@
 'use client';
 
 import "./login.css";
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
+
+  const router = useRouter();
+
   async function onSubmit(event) {
     event.preventDefault()
  
@@ -18,7 +22,13 @@ export default function Page() {
  
     // Handle response if necessary
     const data = await response.json()
-    // ...
+
+    if(data.logged) {
+      router.push("/home");
+    }
+    else {
+      alert(data.message);
+    }
   }
  
   return (
@@ -30,6 +40,7 @@ export default function Page() {
         <form onSubmit={onSubmit}>
           <label for="email">Email:</label><br/>
           <input type="email" id="email" name="email"/><br/>
+          
           <label for="password">Password:</label><br/>
           <input type="password" id="password" name="password"/>
           <br/>

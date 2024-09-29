@@ -10,7 +10,11 @@ export async function POST(req) {
     if(user != null && user.password == body.password) {
       return NextResponse.json({
         message: "Usuario " + body.email + " exitosamente",
-        logged: true
+        logged: true,
+        user: {
+          rut: user.rut_usuario,
+          nombre: user.nombre_usuario
+        }
       })
     }
 
