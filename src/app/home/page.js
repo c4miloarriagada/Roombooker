@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import './home.css'
 import Image from 'next/image'
+import { TextField } from '@mui/material'
 
 export default function HomePage() {
   const [habitaciones, setHabitaciones] = useState([])
@@ -36,17 +37,44 @@ export default function HomePage() {
       <h1 className="titulo">Hotel Pacific Reef</h1>
       <h1 className="subtitulo">Encuentra la reserva de tus sueños</h1>
 
-      <form onSubmit={onSubmit}>
-        <label for="llegada">Fecha llegada:</label>
-        <br />
-        <input type="date" id="llegada" name="llegada" />
-        <br />
+      <form
+        style={{
+          maxWidth: '20rem',
+          backgroundColor: '#ffff',
+          padding: '0.6rem',
+          borderRadius: '0.3rem'
+        }}
+        onSubmit={onSubmit}
+      >
+        <TextField
+          label="Fecha llegada"
+          type="date"
+          id="llegada"
+          name="llegada"
+          variant="outlined"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
 
-        <label for="salida">Fecha salida:</label>
-        <br />
-        <input type="date" id="salida" name="salida" />
-        <br />
-        <button type="submit">Buscar</button>
+        <TextField
+          label="Fecha salida"
+          type="date"
+          id="salida"
+          name="salida"
+          variant="outlined"
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+
+        <Button variant="contained" type="submit" fullWidth>
+          Buscar
+        </Button>
       </form>
       <div>
         <Box
