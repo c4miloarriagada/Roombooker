@@ -38,9 +38,9 @@ export default function RegistroPage() {
   return (
     <div>
       <div className="panel">
-        <h1 className="titulo">Hotel pacific reef</h1>
+        <h1 className="titulo">Hotel Pacific Reef</h1>
 
-        <h2>Inicio de sesion</h2>
+        <h2>Registrarse</h2>
         <div style={{ maxWidth: '30rem' }}>
           <form onSubmit={onSubmit}>
             <TextField
@@ -51,6 +51,7 @@ export default function RegistroPage() {
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
             />
 
             <TextField
@@ -61,16 +62,18 @@ export default function RegistroPage() {
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
             />
 
             <TextField
-              label="Apellido Completo"
+              label="Apellido"
               type="text"
               id="apellido"
               name="apellido"
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
             />
 
             <TextField
@@ -81,6 +84,7 @@ export default function RegistroPage() {
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
             />
 
             <TextField
@@ -91,6 +95,7 @@ export default function RegistroPage() {
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
               InputLabelProps={{
                 shrink: true
               }}
@@ -104,6 +109,7 @@ export default function RegistroPage() {
               variant="outlined"
               fullWidth
               margin="normal"
+              required={true}
             />
 
             <Button variant="contained" type="submit" fullWidth>

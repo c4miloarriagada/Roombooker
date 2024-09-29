@@ -33,12 +33,12 @@ export default function Page() {
   return (
     <div>
       <div className="panel">
-        <h1 className="titulo">hotel pacific reef</h1>
+        <h1 className="titulo">Hotel Pacific Reef</h1>
 
         <h2>Inicio de sesion</h2>
         <form onSubmit={onSubmit}>
           <br />
-          <TextField id="email" type="email" label="Email" variant="outlined" />
+          <TextField id="email" type="email" label="Email" variant="outlined" required={true} />
 
           <br />
 
@@ -47,7 +47,7 @@ export default function Page() {
             id="password"
             type="password"
             label="Password"
-            variant="outlined"
+            variant="outlined" required={true}
           />
 
           <br />
