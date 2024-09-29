@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import './home.css'
+import Image from 'next/image'
 
 export default function HomePage() {
   const [habitaciones, setHabitaciones] = useState([])
@@ -60,14 +61,15 @@ export default function HomePage() {
           {habitaciones.map((habitacion, index) => (
             <Card key={index} variant="outlined" sx={{ minWidth: 275 }}>
               <CardContent>
-                <img
+                <Image
                   src={
                     '/img/habitaciones/' +
                     habitacion.tipo +
                     '/' +
                     habitacion.imagenes[0]
                   }
-                ></img>
+                  alt="habitacion"
+                />
                 <Typography variant="h5" component="div">
                   {habitacion.descripcion}
                 </Typography>
