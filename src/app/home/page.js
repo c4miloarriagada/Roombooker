@@ -91,7 +91,7 @@ export default function HomePage() {
               style={{
                 display: 'grid',
                 gap: '0.4rem',
-                gridTemplateColumns: 'repeat(3,1fr)'
+                gridTemplateColumns: 'repeat(4,1fr)'
               }}
             >
               {habitaciones.map((habitacion, index) => (

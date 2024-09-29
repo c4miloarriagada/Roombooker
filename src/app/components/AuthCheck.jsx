@@ -17,7 +17,7 @@ export default function AuthCheck({ children }) {
         if (data.authenticated) {
           setIsAuthenticated(true)
         } else {
-          redirect('/login')
+          router.push('/login')
         }
       } catch (error) {
         console.error('Error al verificar la autenticación:', error)
