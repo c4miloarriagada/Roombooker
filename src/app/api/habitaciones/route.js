@@ -8,25 +8,28 @@ export async function POST(req) {
   try {
     const body = await req.json()
 
-    var habitaciones = await Habitacion.findAll();
+    let habitaciones = await Habitacion.findAll()
 
-    for(var x in habitaciones) {
-      var habitacion = habitaciones[x];
+    for (var x in habitaciones) {
+      let habitacion = habitaciones[x]
 
-      const tipoHabitacion = await TipoHabitacion.findOne({where:{id_tipo_habitacion: habitacion.id_tipo_habitacion}})
-      const imagenes = await ImagenHabitacion.findAll({where:{id_tipo_habitacion: habitacion.id_tipo_habitacion}})
-      
+      const tipoHabitacion = await TipoHabitacion.findOne({
+        where: { id_tipo_habitacion: habitacion.id_tipo_habitacion }
+      })
+      const imagenes = await ImagenHabitacion.findAll({
+        where: { id_tipo_habitacion: habitacion.id_tipo_habitacion }
+      })
+
       habitaciones[x] = {
         id: habitacion.id_habitacion,
         tipo: tipoHabitacion.id_tipo_habitacion,
         descripcion: tipoHabitacion.descripcion_tipo_habitacion,
         precio: tipoHabitacion.precio,
-        imagenes: imagenes.map(imagen => imagen.imagen)
+        imagenes: imagenes.map((imagen) => imagen.imagen)
       }
     }
 
     return NextResponse.json(habitaciones)
-
   } catch (error) {
     console.error('Error al crear el usuario:', error)
     return NextResponse.json(

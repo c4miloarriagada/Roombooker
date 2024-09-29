@@ -2,7 +2,14 @@
 import { ToastContainer, toast } from 'react-toastify'
 import React, { useState } from 'react'
 import style from './../page.module.css'
-import { Button } from '@mui/material'
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
+} from '@mui/material'
 export const RegistroUsuario = ({ tipoUsuarios }) => {
   const [formData, setFormData] = useState({
     rut_usuario: '',
@@ -58,101 +65,108 @@ export const RegistroUsuario = ({ tipoUsuarios }) => {
   }
   return (
     <div>
-      <h2>Modificar Datos</h2>
+      <h2>Igresar Funcionario</h2>
       <form className={style.formulario} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="rut_usuario">RUT Usuario:</label>
-          <input
-            type="text"
-            id="rut_usuario"
-            name="rut_usuario"
-            value={formData.rut_usuario}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="RUT Usuario"
+          type="text"
+          id="rut_usuario"
+          name="rut_usuario"
+          value={formData.rut_usuario}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
 
-        <div>
-          <label htmlFor="nombre_usuario">Nombre:</label>
-          <input
-            type="text"
-            id="nombre_usuario"
-            name="nombre_usuario"
-            value={formData.nombre_usuario}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Nombre"
+          type="text"
+          id="nombre_usuario"
+          name="nombre_usuario"
+          value={formData.nombre_usuario}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
 
-        <div>
-          <label htmlFor="apellido_usuario">Apellido:</label>
-          <input
-            type="text"
-            id="apellido_usuario"
-            name="apellido_usuario"
-            value={formData.apellido_usuario}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Apellido"
+          type="text"
+          id="apellido_usuario"
+          name="apellido_usuario"
+          value={formData.apellido_usuario}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
 
-        <div>
-          <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
-          <input
-            type="date"
-            id="fecha_nacimiento"
-            name="fecha_nacimiento"
-            value={formData.fecha_nacimiento}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Fecha de Nacimiento"
+          type="date"
+          id="fecha_nacimiento"
+          name="fecha_nacimiento"
+          value={formData.fecha_nacimiento}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
 
-        <div>
-          <label htmlFor="correo">Correo Electrónico:</label>
-          <input
-            type="email"
-            id="correo"
-            autoComplete="off"
-            name="correo"
-            value={formData.correo}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Correo Electrónico"
+          type="email"
+          id="correo"
+          autoComplete="off"
+          name="correo"
+          value={formData.correo}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
 
-        <div>
-          <label htmlFor="id_tipo_usuario">Tipo de Usuario:</label>
-          <select
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="id_tipo_usuario_label">Tipo de Usuario</InputLabel>
+          <Select
+            labelId="id_tipo_usuario_label"
             id="id_tipo_usuario"
             name="id_tipo_usuario"
             value={formData.id_tipo_usuario}
             onChange={handleChange}
             required
           >
-            <option value="">Seleccione un tipo de usuario</option>
+            <MenuItem value="">
+              <em>Seleccione un tipo de usuario</em>
+            </MenuItem>
             {tipoUsuarios.map((tipo) => (
-              <option key={tipo.id} value={tipo.id}>
+              <MenuItem key={tipo.id} value={tipo.id}>
                 {tipo.nombre_tipo}
-              </option>
+              </MenuItem>
             ))}
-          </select>
-        </div>
+          </Select>
+        </FormControl>
 
-        <div>
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <TextField
+          label="Contraseña"
+          type="password"
+          autoComplete="off"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          fullWidth
+          margin="normal"
+        />
+
         <div style={{ marginTop: '1rem' }}>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" type="submit" fullWidth>
             Registrar
           </Button>
         </div>

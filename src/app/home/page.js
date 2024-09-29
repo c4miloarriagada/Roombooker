@@ -27,7 +27,6 @@ export default function HomePage() {
       })
     })
 
-    // Handle response if necessary
     const data = await response.json()
     setHabitaciones(data)
   }
