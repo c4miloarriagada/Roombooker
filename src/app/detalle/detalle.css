@@ -19,7 +19,15 @@
 }
 
 .image-container {
-  margin-bottom: 16px; 
+  margin-bottom: 16px;
+  max-width: 100%; 
+  overflow: hidden; 
+}
+
+.image-container img {
+  width: 100%; 
+  height: auto; 
+  display: block; 
 }
 
 .card {

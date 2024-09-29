@@ -2,13 +2,13 @@
 
 import "./home.css";
 import { useState } from "react";
+import Link from 'next/link'; // Importar para usar en la redirección
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link'; // Importar Link de Next.js
 
 export default function HomePage() {
   const [habitaciones, setHabitaciones] = useState([]);
@@ -26,13 +26,10 @@ export default function HomePage() {
         tipo: formData.get('tipo'),
         personas: formData.get('personas'),
       }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
     });
 
     const data = await response.json();
-    setHabitaciones(data);
+    setHabitaciones(data); // Actualiza el estado con la respuesta del backend
   }
 
   return (
@@ -51,6 +48,7 @@ export default function HomePage() {
         <input type="number" name="personas" placeholder="Número de personas" min="1" required />
         <input type="date" name="llegada" required />
         <input type="date" name="salida" required />
+
         <button type="submit">Buscar</button>
       </form>
 
@@ -66,14 +64,18 @@ export default function HomePage() {
           {habitaciones.map((habitacion) => (
             <Card variant="outlined" sx={{ minWidth: 275 }} key={habitacion.id}>
               <CardContent>
-                <img src={`/img/habitaciones/${habitacion.tipo}/${habitacion.imagenes[0]}`} alt={habitacion.tipo} />
+                <img
+                  src={"/img/habitaciones/" + habitacion.tipo + "/" + habitacion.imagenes[0]}
+                  alt={habitacion.tipo}
+                  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+                />
                 <Typography variant="h5" component="div">
                   {habitacion.descripcion}
                 </Typography>
               </CardContent>
               <CardActions>
-                {/* Link para redirigir a la página de detalles de la habitación */}
-                <Link href={`/detalle/${habitacion.id}`}>
+                {/* Agregar un enlace dinámico que redirige a la página de detalles */}
+                <Link href={`/habitacion/${habitacion.id}`} passHref>
                   <Button variant="outlined" size="small">Mostrar Más</Button>
                 </Link>
               </CardActions>
@@ -84,4 +86,3 @@ export default function HomePage() {
     </div>
   );
 }
-
