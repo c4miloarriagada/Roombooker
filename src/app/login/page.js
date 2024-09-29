@@ -1,36 +1,35 @@
-'use client';
+'use client'
 
-import "./login.css";
+import { Button, TextField } from '@mui/material'
+import './login.css'
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify'
 
 export default function Page() {
-
-  const router = useRouter();
+  const router = useRouter()
 
   async function onSubmit(event) {
     event.preventDefault()
- 
+
     const formData = new FormData(event.target)
 
     const response = await fetch('/api/login', {
       method: 'POST',
       body: JSON.stringify({
         email: formData.get('email'),
-        password: formData.get('password'),
-      }),
+        password: formData.get('password')
+      })
     })
- 
-    // Handle response if necessary
+
     const data = await response.json()
 
-    if(data.logged) {
-      router.push("/home");
-    }
-    else {
-      alert(data.message);
+    if (data.logged) {
+      router.push('/home')
+    } else {
+      toast(data.message)
     }
   }
- 
+
   return (
     <div>
       <div className="panel">
@@ -38,15 +37,27 @@ export default function Page() {
 
         <h2>Inicio de sesion</h2>
         <form onSubmit={onSubmit}>
-          <label for="email">Email:</label><br/>
-          <input type="email" id="email" name="email"/><br/>
-          
-          <label for="password">Password:</label><br/>
-          <input type="password" id="password" name="password"/>
-          <br/>
-          <br/>
-          <button type="submit">Log in</button>
+          <br />
+          <TextField id="email" type="email" label="Email" variant="outlined" />
+
+          <br />
+
+          <br />
+          <TextField
+            id="password"
+            type="password"
+            label="Password"
+            variant="outlined"
+          />
+
+          <br />
+          <br />
+          <Button variant="contained" type="Submit">
+            {' '}
+            Log in
+          </Button>
         </form>
+        <ToastContainer />
       </div>
       <div className="panel fondo"></div>
     </div>

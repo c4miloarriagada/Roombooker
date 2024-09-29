@@ -1,0 +1,21 @@
+.fondo {
+  position: absolute;
+  background-image: url('/img/fondo.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.panel {
+  width: 50%;
+  display: inline-block;
+}
+
+.titulo {
+  color: #aa6227;
+  font-size: 4rem;
+}
