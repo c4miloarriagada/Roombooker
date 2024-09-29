@@ -6,6 +6,8 @@ import DetalleReserva from '../models/DetalleReserva.js'
 import Habitacion from '../models/Habitacion.js'
 import TipoHabitacion from '../models/TipoHabitacion.js'
 import PagoReserva from '../models/PagoReserva.js'
+import ImagenHabitacion from '../models/ImagenHabitacion.js'
+
 
 const initDatabase = async () => {
   try {

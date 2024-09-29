@@ -6,7 +6,7 @@ export async function POST(req) {
   try {
     const body = await req.json()
     const tipoUsuario = await TipoUsuario.findOne({
-      where: { nombre_tipo: 'cliente' }
+      where: { nombre_tipo: body.tipo_usuario }
     })
 
     const newUser = await User.create({
@@ -14,7 +14,7 @@ export async function POST(req) {
       nombre_usuario: body.nombre_usuario,
       apellido_usuario: body.apellido_usuario,
       fecha_nacimiento: body.fecha_nacimiento,
-      correo: body.correo,
+      correo: body.email,
       id_tipo_usuario: tipoUsuario.id,
       password: body.password
     })
