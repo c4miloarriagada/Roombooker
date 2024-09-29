@@ -87,7 +87,13 @@ export default function HomePage() {
               gap: 2
             }}
           >
-            <div style={{ display: 'flex', gap: '0.4rem' }}>
+            <div
+              style={{
+                display: 'grid',
+                gap: '0.4rem',
+                gridTemplateColumns: 'repeat(3,1fr)'
+              }}
+            >
               {habitaciones.map((habitacion, index) => (
                 <Card key={index} variant="outlined" sx={{ minWidth: 275 }}>
                   <CardContent>
