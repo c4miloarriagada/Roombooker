@@ -33,30 +33,40 @@ export default function Page() {
   return (
     <div>
       <div className="panel">
-        <h1 className="titulo">hotel pacific reef</h1>
+        <h1 style={{ marginLeft: '5rem' }} className="titulo">
+          Hotel Pacific Reef
+        </h1>
+        <div style={{ padding: '5rem' }}>
+          <h2>Inicio de sesion</h2>
+          <form onSubmit={onSubmit}>
+            <br />
+            <TextField
+              id="email"
+              type="email"
+              label="Email"
+              variant="outlined"
+              required={true}
+            />
 
-        <h2>Inicio de sesion</h2>
-        <form onSubmit={onSubmit}>
-          <br />
-          <TextField id="email" type="email" label="Email" variant="outlined" />
+            <br />
 
-          <br />
+            <br />
+            <TextField
+              id="password"
+              type="password"
+              label="Password"
+              variant="outlined"
+              required={true}
+            />
 
-          <br />
-          <TextField
-            id="password"
-            type="password"
-            label="Password"
-            variant="outlined"
-          />
-
-          <br />
-          <br />
-          <Button variant="contained" type="Submit">
-            {' '}
-            Log in
-          </Button>
-        </form>
+            <br />
+            <br />
+            <Button variant="contained" type="Submit">
+              {' '}
+              Log in
+            </Button>
+          </form>
+        </div>
         <ToastContainer />
       </div>
       <div className="panel fondo"></div>

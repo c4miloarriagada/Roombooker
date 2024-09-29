@@ -38,78 +38,91 @@ export default function RegistroPage() {
   return (
     <div>
       <div className="panel">
-        <h1 className="titulo">Hotel pacific reef</h1>
+        <h1 style={{ marginLeft: '2rem' }} className="titulo">
+          Hotel Pacific Reef
+        </h1>
+        <div
+          style={{
+            padding: '5rem'
+          }}
+        >
+          <h2>Registrarse</h2>
+          <div style={{ maxWidth: '30rem' }}>
+            <form onSubmit={onSubmit}>
+              <TextField
+                label="Email"
+                type="email"
+                id="email"
+                name="email"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+              />
 
-        <h2>Inicio de sesion</h2>
-        <div style={{ maxWidth: '30rem' }}>
-          <form onSubmit={onSubmit}>
-            <TextField
-              label="Email"
-              type="email"
-              id="email"
-              name="email"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+              <TextField
+                label="Nombre"
+                type="text"
+                id="nombre"
+                name="nombre"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+              />
 
-            <TextField
-              label="Nombre"
-              type="text"
-              id="nombre"
-              name="nombre"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+              <TextField
+                label="Apellido"
+                type="text"
+                id="apellido"
+                name="apellido"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+              />
 
-            <TextField
-              label="Apellido Completo"
-              type="text"
-              id="apellido"
-              name="apellido"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+              <TextField
+                label="Rut"
+                type="text"
+                id="rut"
+                name="rut"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+              />
 
-            <TextField
-              label="Rut"
-              type="text"
-              id="rut"
-              name="rut"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+              <TextField
+                label="Fecha Nacimiento"
+                type="date"
+                id="fecha_nacimiento"
+                name="fecha_nacimiento"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
 
-            <TextField
-              label="Fecha Nacimiento"
-              type="date"
-              id="fecha_nacimiento"
-              name="fecha_nacimiento"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-            />
+              <TextField
+                label="Password"
+                type="password"
+                id="password"
+                name="password"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                required={true}
+              />
 
-            <TextField
-              label="Password"
-              type="password"
-              id="password"
-              name="password"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-
-            <Button variant="contained" type="submit" fullWidth>
-              Registrarse
-            </Button>
-          </form>
+              <Button variant="contained" type="submit" fullWidth>
+                Registrarse
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
       <div className="panel fondo"></div>

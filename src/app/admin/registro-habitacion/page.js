@@ -1,7 +1,12 @@
+import Link from 'next/link'
+import { AgregarHabitacionForm } from './_components/AgregarHabitacionForm'
+
 export default async function RegistroHabitacionPage() {
   return (
-    <form>
-      <h1>formulario</h1>
-    </form>
+    <>
+      <Link href="/admin/administrar-habitaciones" />
+      <h1>Agregar Habitacion</h1>
+      <AgregarHabitacionForm />
+    </>
   )
 }

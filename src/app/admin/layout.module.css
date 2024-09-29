@@ -8,6 +8,7 @@
   display: grid;
   height: 100dvh;
   width: 100dvw;
+  position: relative;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: 'form aside';
 }
@@ -32,4 +33,15 @@
   height: 100%;
   width: 100%;
   grid-area: form;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #aa6227;
+  width: 100%;
 }

@@ -29,8 +29,6 @@ export const RegistroUsuario = ({ tipoUsuarios }) => {
     })
   }
 
-  console.log(formData)
-
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -54,13 +52,13 @@ export const RegistroUsuario = ({ tipoUsuarios }) => {
           id_tipo_usuario: '',
           password: ''
         })
-        toast('Usuario registrado con éxito')
+        toast.success('Usuario registrado con éxito')
       } else {
         const errorData = await response.json()
         toast('Error al registrar el usuario: ' + errorData.message)
       }
     } catch (error) {
-      toast('Error en la solicitud: ' + error.message)
+      toast.error('Error en la solicitud: ' + error.message)
     }
   }
   return (

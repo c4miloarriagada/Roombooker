@@ -1,7 +1,6 @@
 import { db } from '../lib/db.js'
 import { DataTypes } from 'sequelize'
-import TipoHabitacion  from './TipoHabitacion.js'
-
+import TipoHabitacion from './TipoHabitacion.js'
 
 const Habitacion = db.define(
   'habitacion',
@@ -19,17 +18,15 @@ const Habitacion = db.define(
         model: TipoHabitacion,
         key: 'id_tipo_habitacion'
       }
+    },
+    disponible: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   },
   {
     timestamps: false
   }
 )
-
-Habitacion.belongsTo(TipoHabitacion, {
-  foreignKey: 'id_tipo_habitacion',
-  as: 'tipoHabitacion'
-}) 
-
 
 export default Habitacion

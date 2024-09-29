@@ -85,29 +85,28 @@ export default function HomePage() {
             gap: 2
           }}
         >
-          {habitaciones.map((habitacion, index) => (
-            <Card key={index} variant="outlined" sx={{ minWidth: 275 }}>
-              <CardContent>
-                <Image
-                  src={
-                    '/img/habitaciones/' +
-                    habitacion.tipo +
-                    '/' +
-                    habitacion.imagenes[0]
-                  }
-                  alt="habitacion"
-                />
-                <Typography variant="h5" component="div">
-                  {habitacion.descripcion}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button variant="outlined" size="small">
-                  Mostrar Más
-                </Button>
-              </CardActions>
-            </Card>
-          ))}
+          <div style={{ display: 'flex', gap: '0.4rem' }}>
+            {habitaciones.map((habitacion, index) => (
+              <Card key={index} variant="outlined" sx={{ minWidth: 275 }}>
+                <CardContent>
+                  <Image
+                    src={habitacion.imagenes[0]}
+                    width={100}
+                    height={100}
+                    alt="habitacion"
+                  />
+                  <Typography variant="h5" component="div">
+                    {habitacion.descripcion}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button variant="outlined" size="small">
+                    Mostrar Más
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+          </div>
         </Box>
       </div>
     </div>

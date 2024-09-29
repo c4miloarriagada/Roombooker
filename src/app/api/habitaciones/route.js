@@ -1,4 +1,3 @@
-import { where } from 'sequelize'
 import Habitacion from '@/models/Habitacion'
 import { NextResponse } from 'next/server'
 import TipoHabitacion from '@/models/TipoHabitacion'
