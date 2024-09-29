@@ -1,5 +1,6 @@
 "use client";
 
+import "./home.css";
 import { useState } from "react"
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -31,8 +32,9 @@ export default function HomePage() {
   }
 
   return (
-    <div>
-      <h1>Hello dasdfasdsadasdge</h1>
+    <div className="fondo">
+      <h1 className="titulo" >Hotel Pacific Reef</h1>
+        <h1 className="subtitulo" >Encuentra la reserva de tus sueños</h1>
 
       <form onSubmit={onSubmit}>
           <label for="llegada">Fecha llegada:</label><br/>
