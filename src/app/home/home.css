@@ -27,10 +27,17 @@
   }
 
 .titulo {
-    color: #ffff;
+    color: #ffffff;
     font-family: "Aboreto";
     font-size: 75px;
     text-shadow: 1px 1px 2px black;
+}
+
+.subtitulo {
+  color: #ffff;
+  font-family: "Aboreto";
+  font-size: 35px;
+  text-shadow: 1px 1px 2px black;
 }
 
 .barra {

@@ -1,0 +1,35 @@
+.container {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header .MuiSvgIcon-root {
+  font-size: 40px; 
+  margin-right: 8px; 
+}
+
+.description {
+  font-weight: bold; 
+  margin-bottom: 16px; 
+}
+
+.image-container {
+  margin-bottom: 16px; 
+}
+
+.card {
+  margin-top: 16px;
+}
+
+.include-section {
+  margin-top: 32px; 
+}
+
+.include-card {
+  margin-bottom: 16px; 
+}
