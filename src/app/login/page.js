@@ -42,6 +42,7 @@ export default function Page() {
             <br />
             <TextField
               id="email"
+              name="email"
               type="email"
               label="Email"
               variant="outlined"
@@ -53,6 +54,7 @@ export default function Page() {
             <br />
             <TextField
               id="password"
+              name="password"
               type="password"
               label="Password"
               variant="outlined"

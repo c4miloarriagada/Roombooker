@@ -2,7 +2,7 @@ import Link from 'next/link'
 import style from './layout.module.css'
 const links = [
   { url: '/admin/registro-habitacion', value: 'Registro de Habitación' },
-  { url: '/admin/registro-funcionario', value: 'Gestión de Habitaciones' },
+  { url: '/admin/registro-funcionario', value: 'Registro Funcionario' },
   { url: '/admin/administrar-habitaciones', value: 'Administrar Habitacion' },
   { url: '/admin/editar-usuario', value: 'Editar Usuarios' }
 ]
