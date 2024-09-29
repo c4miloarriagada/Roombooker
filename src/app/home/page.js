@@ -1,88 +1,123 @@
-"use client";
+'use client'
 
-import "./home.css";
-import { useState } from "react";
-import Link from 'next/link'; // Importar para usar en la redirección
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { useState } from 'react'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardActions from '@mui/material/CardActions'
+import CardContent from '@mui/material/CardContent'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import './home.css'
+import Image from 'next/image'
+import { TextField } from '@mui/material'
+import AuthCheck from '../components/AuthCheck'
 
 export default function HomePage() {
-  const [habitaciones, setHabitaciones] = useState([]);
+  const [habitaciones, setHabitaciones] = useState([])
 
   async function onSubmit(event) {
-    event.preventDefault();
+    event.preventDefault()
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target)
 
     const response = await fetch('/api/habitaciones', {
       method: 'POST',
       body: JSON.stringify({
         llegada: formData.get('llegada'),
-        salida: formData.get('salida'),
-        tipo: formData.get('tipo'),
-        personas: formData.get('personas'),
-      }),
-    });
+        salida: formData.get('salida')
+      })
+    })
 
-    const data = await response.json();
-    setHabitaciones(data); // Actualiza el estado con la respuesta del backend
+    const data = await response.json()
+    setHabitaciones(data)
   }
 
   return (
-    <div className="fondo">
-      <h1 className="titulo">Hotel Pacific Reef</h1>
-      <h1 className="subtitulo">Encuentra la reserva de tus sueños</h1>
+    <AuthCheck>
+      <div className="fondo">
+        <h1 className="titulo">Hotel Pacific Reef</h1>
+        <h1 className="subtitulo">Encuentra la reserva de tus sueños</h1>
 
-      <form onSubmit={onSubmit} className="barra">
-        <select name="tipo" required>
-          <option value="" disabled selected>Selecciona un tipo de habitación</option>
-          <option value="simple">Habitación Simple</option>
-          <option value="doble">Habitación Doble</option>
-          <option value="suite">Suite</option>
-        </select>
-
-        <input type="number" name="personas" placeholder="Número de personas" min="1" required />
-        <input type="date" name="llegada" required />
-        <input type="date" name="salida" required />
-
-        <button type="submit">Buscar</button>
-      </form>
-
-      <div className="panel">
-        <Box
-          style={{ textAlign: "center", width: '100%' }}
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: 2,
+        <form
+          style={{
+            maxWidth: '20rem',
+            backgroundColor: '#ffff',
+            padding: '0.6rem',
+            borderRadius: '0.3rem'
           }}
+          onSubmit={onSubmit}
         >
-          {habitaciones.map((habitacion) => (
-            <Card variant="outlined" sx={{ minWidth: 275 }} key={habitacion.id}>
-              <CardContent>
-                <img
-                  src={"/img/habitaciones/" + habitacion.tipo + "/" + habitacion.imagenes[0]}
-                  alt={habitacion.tipo}
-                  style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-                />
-                <Typography variant="h5" component="div">
-                  {habitacion.descripcion}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                {/* Agregar un enlace dinámico que redirige a la página de detalles */}
-                <Link href={`/habitacion/${habitacion.id}`} passHref>
-                  <Button variant="outlined" size="small">Mostrar Más</Button>
-                </Link>
-              </CardActions>
-            </Card>
-          ))}
-        </Box>
+          <TextField
+            label="Fecha llegada"
+            type="date"
+            id="llegada"
+            name="llegada"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+
+          <TextField
+            label="Fecha salida"
+            type="date"
+            id="salida"
+            name="salida"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+
+          <Button variant="contained" type="submit" fullWidth>
+            Buscar
+          </Button>
+        </form>
+        <div>
+          <Box
+            style={{ textAlign: 'center' }}
+            sx={{
+              width: '100%',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gap: 2
+            }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gap: '0.4rem',
+                gridTemplateColumns: 'repeat(3,1fr)'
+              }}
+            >
+              {habitaciones.map((habitacion, index) => (
+                <Card key={index} variant="outlined" sx={{ minWidth: 275 }}>
+                  <CardContent>
+                    <Image
+                      src={habitacion.imagenes[0]}
+                      width={100}
+                      height={100}
+                      alt="habitacion"
+                    />
+                    <Typography variant="h5" component="div">
+                      {habitacion.descripcion}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button variant="outlined" size="small">
+                      Mostrar Más
+                    </Button>
+                  </CardActions>
+                </Card>
+              ))}
+            </div>
+          </Box>
+        </div>
       </div>
-    </div>
-  );
+    </AuthCheck>
+  )
 }

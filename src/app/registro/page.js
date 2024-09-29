@@ -1,16 +1,17 @@
-'use client';
+'use client'
 
-import { FormularioRegistro } from './_component/FormularioRegistro'
-import style from './page.module.css'
+import { Button, TextField } from '@mui/material'
+import './registro.css'
 import { useRouter } from 'next/navigation'
+import { ToastContainer, toast } from 'react-toastify'
+import AuthCheck from '../components/AuthCheck'
 
 export default function RegistroPage() {
-
-  const router = useRouter();
+  const router = useRouter()
 
   async function onSubmit(event) {
     event.preventDefault()
- 
+
     const formData = new FormData(event.target)
 
     const response = await fetch('/api/user', {
@@ -23,48 +24,112 @@ export default function RegistroPage() {
         rut_usuario: formData.get('rut'),
         fecha_nacimiento: formData.get('fecha_nacimiento'),
         tipo_usuario: 'cliente'
-      }),
+      })
     })
 
     const data = await response.json()
 
-    if(data.user) {
-      router.push("/login");
+    if (data.user) {
+      router.push('/login')
+    } else {
+      toast(data.error)
     }
-    else {
-      alert(data.error);
-    }
-  
   }
 
-
   return (
-    <div>
-      <div className="panel">
-        <h1 className="titulo">hotel pacific reef</h1>
+    <AuthCheck>
+      <div>
+        <div className="panel">
+          <h1 style={{ marginLeft: '2rem' }} className="titulo">
+            Hotel Pacific Reef
+          </h1>
+          <div
+            style={{
+              padding: '5rem'
+            }}
+          >
+            <h2>Registrarse</h2>
+            <div style={{ maxWidth: '30rem' }}>
+              <form onSubmit={onSubmit}>
+                <TextField
+                  label="Email"
+                  type="email"
+                  id="email"
+                  name="email"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                />
 
-        <h2>Inicio de sesion</h2>
-        <form onSubmit={onSubmit}>
-          <label for="email">Email:</label><br/>
-          <input type="email" id="email" name="email"/><br/>
-          <label for="nombre">Nombre:</label><br/>
-          <input type="text" id="nombre" name="nombre"/><br/>
-          <label for="apellido">Apellido Completo:</label><br/>
-          <input type="text" id="apellido" name="apellido"/><br/>
-          <label for="rut">Rut:</label><br/>
-          <input type="text" id="rut" name="rut"/>
-          <label for="fecha_nacimiento">Fecha nacimiento:</label><br/>
-          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"/>
-          <label for="password">Password:</label><br/>
-          <input type="password" id="password" name="password"/>
-          <br/>
+                <TextField
+                  label="Nombre"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                />
 
-          <br/>
-          <br/>
-          <button type="submit">Registrarse</button>
-        </form>
+                <TextField
+                  label="Apellido"
+                  type="text"
+                  id="apellido"
+                  name="apellido"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                />
+
+                <TextField
+                  label="Rut"
+                  type="text"
+                  id="rut"
+                  name="rut"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                />
+
+                <TextField
+                  label="Fecha Nacimiento"
+                  type="date"
+                  id="fecha_nacimiento"
+                  name="fecha_nacimiento"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
+
+                <TextField
+                  label="Password"
+                  type="password"
+                  id="password"
+                  name="password"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  required={true}
+                />
+
+                <Button variant="contained" type="submit" fullWidth>
+                  Registrarse
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div className="panel fondo"></div>
+        <ToastContainer />
       </div>
-      <div className="panel fondo"></div>
-    </div>
+    </AuthCheck>
   )
 }

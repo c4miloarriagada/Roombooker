@@ -1,0 +1,19 @@
+.button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary {
+  background-color: #284a5e;
+}
+
+.secondary {
+  background-color: #d03b3b;
+}
