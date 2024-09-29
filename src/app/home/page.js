@@ -23,10 +23,11 @@ export default function HomePage() {
       body: JSON.stringify({
         llegada: formData.get('llegada'),
         salida: formData.get('salida'),
+        tipo: formData.get('tipo'),
+        personas: formData.get('personas'),
       }),
     })
  
-    // Handle response if necessary
     const data = await response.json()
     setHabitaciones(data);
   }
@@ -34,42 +35,49 @@ export default function HomePage() {
   return (
     <div className="fondo">
       <h1 className="titulo" >Hotel Pacific Reef</h1>
-        <h1 className="subtitulo" >Encuentra la reserva de tus sueños</h1>
+      <h1 className="subtitulo" >Encuentra la reserva de tus sueños</h1>
 
-      <form onSubmit={onSubmit}>
-          <label for="llegada">Fecha llegada:</label><br/>
-          <input type="date" id="llegada" name="llegada"/><br/>
-          
-          <label for="salida">Fecha salida:</label><br/>
-          <input type="date" id="salida" name="salida"/>
-          <br/>
-          <button type="submit">Buscar</button>
-        </form>
-        <div>
+      <form onSubmit={onSubmit} className="barra">
+        <select name="tipo" required>
+          <option value="" disabled selected>Selecciona un tipo de habitación</option>
+          <option value="simple">Habitación Simple</option>
+          <option value="doble">Habitación Doble</option>
+          <option value="suite">Suite</option>
+        </select>
+
+        <input type="number" name="personas" placeholder="Número de personas" min="1" required />
+
+        <input type="date" name="llegada" required />
+        <input type="date" name="salida" required />
+
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div className="panel">
         <Box
-        style={{textAlign: "center"}}
-      sx={{
-        width: '100%',
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-        gap: 2,
-      }}
-    >
-        {habitaciones.map((habitacion) => (
-            <Card variant="outlined" sx={{ minWidth: 275 }}>
-            <CardContent>
-              <img src={"/img/habitaciones/" + habitacion.tipo + "/" + habitacion.imagenes[0]}></img>
-              <Typography variant="h5" component="div">
-                {habitacion.descripcion}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button variant="outlined" size="small">Mostrar Más</Button>
-            </CardActions>
-          </Card>
-        ))}
+          style={{ textAlign: "center" }}
+          sx={{
+            width: '100%',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: 2,
+          }}
+        >
+          {habitaciones.map((habitacion) => (
+            <Card variant="outlined" sx={{ minWidth: 275 }} key={habitacion.id}>
+              <CardContent>
+                <img src={"/img/habitaciones/" + habitacion.tipo + "/" + habitacion.imagenes[0]} alt={habitacion.tipo} />
+                <Typography variant="h5" component="div">
+                  {habitacion.descripcion}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button variant="outlined" size="small">Mostrar Más</Button>
+              </CardActions>
+            </Card>
+          ))}
         </Box>
-        </div>
+      </div>
     </div>
   )
 }
