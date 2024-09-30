@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Card, CardContent, Typography, Grid } from '@mui/material';
 import HotelIcon from '@mui/icons-material/Hotel'; // Alternativa para BedIcon
 import ShowerIcon from '@mui/icons-material/Shower';
@@ -10,8 +10,26 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import HouseIcon from '@mui/icons-material/House';
 import './detalle.css';
+import { useRouter, useParams } from 'next/navigation';
+import { Button } from '@mui/material';
 
 const DetallePage = () => {
+
+  const params = useParams();
+  const router = useRouter();
+
+  const [habitacion, setHabitacion] = useState();
+
+  useEffect(() => {
+    async function run() {
+      const response = await fetch("/api/habitaciones/" + params.id, { method: "POST"});
+      setHabitacion(await response.json());
+    }
+    run();
+  });
+
+  if (habitacion == null) return (<h4>Loading...</h4>);
+
   return (
     <div className="container">
       <Box className="header">
@@ -23,12 +41,12 @@ const DetallePage = () => {
       <Grid container spacing={2}>
         <Grid item xs={12} md={8}>
           <Typography className="description" variant="h6" component="div">
-            Habitación doble deluxe
+            {habitacion.descripcion}
           </Typography>
           <div className="image-container">
             <img
-              src="https://hotelfarolopesancollection.com/wp-content/webp-express/webp-images/uploads/habitacion-doble-deluxe-01-1-1920x800.jpg.webp"
-              alt="Habitación Doble Deluxe"
+              src={habitacion.imagenes[0]}
+              alt={habitacion.descripcion}
             />
           </div>
         </Grid>
@@ -41,15 +59,28 @@ const DetallePage = () => {
                 Nuestra Habitación Deluxe tiene acceso directo y privado a la zona de agua del Spa, donde disfrutarás de nuestra piscina de 52m2...
               </Typography>
 
+              
+
               <Typography variant="caption" display="block" sx={{ mt: 2 }}>
                 (En este alojamiento no se aceptan mascotas)
               </Typography>
 
+              
+
               <Box sx={{ mt: 2 }}>
-                <Typography variant="body2"><HotelIcon /> Cama 180 cm</Typography>
+                <Typography variant="body2"><HotelIcon /> Tamaño cama: {habitacion.tamanno_cama}</Typography>
+                <Typography variant="body2"><HotelIcon /> Cantidad de camas: {habitacion.cant_camas}</Typography>
+                <Typography variant="body2"><HotelIcon /> Personas: {habitacion.cant_huespedes}</Typography>
                 <Typography variant="body2"><ShowerIcon /> Baño con ducha</Typography>
                 <Typography variant="body2"><BalconyIcon /> Terraza</Typography>
               </Box>
+
+              <br/>
+              <Button variant="contained" color="primary" onClick={() => router.push('/reserva')}>
+                Seleccionar
+              </Button>
+
+              
             </CardContent>
           </Card>
         </Grid>
@@ -87,6 +118,8 @@ const DetallePage = () => {
             </Card>
           </Grid>
 
+          
+
           <Grid item xs={12} md={4}>
             <Card variant="outlined" className="include-card">
               <CardContent>
@@ -106,3 +139,5 @@ const DetallePage = () => {
 };
 
 export default DetallePage;
+
+

@@ -58,6 +58,9 @@ async function createHabitaciones() {
       where: {
         id_tipo_habitacion: 1,
         descripcion_tipo_habitacion: 'Habitación Doble Deluxe',
+        tamanno_cama: 'H250 cms',
+        cant_camas: 1,
+        cant_huespedes: 2,
         precio: 50000
       }
     })
@@ -65,6 +68,9 @@ async function createHabitaciones() {
       where: {
         id_tipo_habitacion: 2,
         descripcion_tipo_habitacion: 'Habitación Doble Estándar',
+        tamanno_cama: '152 cms',
+        cant_camas: 2,
+        cant_huespedes: 2,
         precio: 40000
       }
     })
@@ -72,6 +78,9 @@ async function createHabitaciones() {
       where: {
         id_tipo_habitacion: 3,
         descripcion_tipo_habitacion: 'Habitación Simple VIP',
+        tamanno_cama: '200 cms',
+        cant_camas: 1,
+        cant_huespedes: 2,
         precio: 30000
       }
     })
@@ -79,6 +88,9 @@ async function createHabitaciones() {
       where: {
         id_tipo_habitacion: 4,
         descripcion_tipo_habitacion: 'Habitación Triple',
+        tamanno_cama: '152 cms',
+        cant_camas: 3,
+        cant_huespedes: 3,
         precio: 60000
       }
     })

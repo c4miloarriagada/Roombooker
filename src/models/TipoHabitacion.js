@@ -14,6 +14,18 @@ const TipoHabitacion = db.define(
       type: DataTypes.STRING,
       allowNull: false
     },
+    tamanno_cama: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    cant_camas: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    cant_huespedes: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     precio: {
       type: DataTypes.INTEGER,
       allowNull: false

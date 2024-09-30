@@ -11,8 +11,12 @@ import './home.css'
 import Image from 'next/image'
 import { TextField } from '@mui/material'
 import AuthCheck from '../components/AuthCheck'
+import { useRouter } from 'next/navigation'
 
 export default function HomePage() {
+
+  const router = useRouter()
+
   const [habitaciones, setHabitaciones] = useState([])
 
   async function onSubmit(event) {
@@ -108,7 +112,7 @@ export default function HomePage() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button variant="outlined" size="small">
+                    <Button variant="outlined" size="small" onClick={() => router.push("/detalle/" + habitacion.id)}>
                       Mostrar Más
                     </Button>
                   </CardActions>

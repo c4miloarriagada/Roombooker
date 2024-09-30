@@ -7,8 +7,12 @@ import BathtubIcon from '@mui/icons-material/Bathtub';
 import WifiIcon from '@mui/icons-material/Wifi';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import './reserva.css';
+import { useRouter } from 'next/navigation';
 
 const ReservaPage = () => {
+
+  const router = useRouter();
+
   return (
     <div className="reservation-container">
       <Typography variant="h2" className="hotel-title">
@@ -22,7 +26,7 @@ const ReservaPage = () => {
           </Typography>
 
           <Typography variant="body1" className="room-details">
-            240m2
+            ROOM 42
           </Typography>
 
           <ul className="room-features">
@@ -38,7 +42,11 @@ const ReservaPage = () => {
           </Typography>
 
           <Typography variant="body2" className="reservation-dates">
-            Fechas de la reserva: <strong>19/09/2024 - 20/09/2024</strong>
+            Fecha ingreso: <strong>19/09/2024</strong>
+          </Typography>
+
+          <Typography variant="body2" className="reservation-dates">
+            Fecha salida: <strong>19/09/2024</strong>
           </Typography>
 
           <Typography variant="h6" className="total-price">
@@ -69,36 +77,33 @@ const ReservaPage = () => {
             />
             <TextField
               fullWidth
-              label="Número de celular"
-              defaultValue="+569 12564728"
+              label="Rut"
+              defaultValue="19.456.444-k"
               margin="normal"
             />
           </Grid>
 
           <Grid item xs={12} md={6}>
-            <Typography variant="h6">Cliente 2</Typography>
+            <Typography variant="h6">Información adicional</Typography>
             <TextField
               fullWidth
-              label="Nombre completo"
-              defaultValue="Makoto Azúa"
+              label="Comentarios o requerimientos"
+              defaultValue=""
               margin="normal"
             />
             <TextField
               fullWidth
-              label="Correo"
-              defaultValue="lalala@gmail.com"
+              label="Cantidad de huéspedes"
+              defaultValue= "2"
               margin="normal"
             />
-            <TextField
-              fullWidth
-              label="Número de celular"
-              defaultValue="+569 84758497"
-              margin="normal"
-            />
+            
           </Grid>
+
+          
         </Grid>
 
-        <Button variant="contained" className="payment-button">
+        <Button variant="contained" className="payment-button" onClick={() => router.push('/checkout/${post.id}')}>
           Ir al portal de pagos
         </Button>
       </Box>

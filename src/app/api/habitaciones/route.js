@@ -7,6 +7,8 @@ export async function POST(req) {
   try {
     const body = await req.json()
 
+    
+
     let habitaciones = await Habitacion.findAll()
 
     for (var x in habitaciones) {
@@ -23,6 +25,9 @@ export async function POST(req) {
         id: habitacion.id_habitacion,
         tipo: tipoHabitacion.id_tipo_habitacion,
         descripcion: tipoHabitacion.descripcion_tipo_habitacion,
+        tamanno_cama: tipoHabitacion.tamanno_cama,
+        cant_camas: tipoHabitacion.cant_camas,
+        cant_huespedes: tipoHabitacion.cant_huespedes,
         precio: tipoHabitacion.precio,
         imagenes: imagenes.map((imagen) => imagen.imagen)
       }

@@ -4,8 +4,11 @@ import React, { useState } from 'react';
 import { Box, Typography, Grid, TextField, Button, Card, CardContent } from '@mui/material';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import './checkout.css'; // Import the CSS file for styling
+import { useRouter } from 'next/navigation';
 
 const CheckoutPage = () => {
+
+  const router = useRouter();
   const [promoCode, setPromoCode] = useState('');
 
   const handlePromoChange = (e) => {
@@ -97,7 +100,7 @@ const CheckoutPage = () => {
                 />
               </Grid>
               <Grid item xs={3}>
-                <Button variant="contained" className="apply-button">
+                <Button variant="contained" className="apply-button" onClick={() => router.push('/home')}>
                   Aplicar
                 </Button>
               </Grid>
